@@ -1,0 +1,97 @@
+/* ----------- Universal Background Color ----------- */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #e3f2fd;   /* Your background color */
+}
+
+/* ----------- Home & Dashboard Background ----------- */
+
+.home-container,
+.dashboard {
+    background: #e3f2fd;   /* Same color for both pages */
+    min-height: 100vh;
+    width: 100%;
+    padding: 20px;
+}
+
+
+/* ---------- Root + typography ---------- */
+:root{
+  --accent:#8b5cf6;
+  --accent-2:#6d28d9;
+  --muted:#9aa3a8;
+  --card-bg: rgba(255,255,255,0.06);
+}
+
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,Segoe UI,Roboto,Arial;background:radial-gradient(circle at 10% 10%, #1e0328 0%, #07020a 60%);color:#fff;}
+
+/* ---------- Top bar + home ---------- */
+.home-top{display:flex;justify-content:space-between;align-items:center;padding:22px 48px}
+.brand{font-weight:800;font-size:20px}
+.brand .accent{color:var(--accent)}
+.actions a{margin-left:10px;text-decoration:none;color:inherit}
+.btn{background:linear-gradient(90deg,var(--accent),var(--accent-2));padding:8px 12px;border-radius:8px;color:#fff;font-weight:700}
+.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:8px;color:#ddd}
+
+/* ---------- Hero layout ---------- */
+.home-hero{display:flex;gap:36px;align-items:start;padding:40px 48px;max-width:1200px;margin:0 auto}
+.hero-left{flex:1}
+.hero-right{width:360px}
+
+/* hero text */
+h1{font-size:36px;margin:6px 0}
+.lead{color:var(--muted);margin:8px 0 18px}
+
+/* features row */
+.features{display:flex;gap:12px;margin-top:18px}
+.feature{display:flex;gap:10px;align-items:center;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:12px;border-radius:10px;backdrop-filter:blur(6px)}
+.f-ico{font-size:20px}
+
+/* glass card on right */
+.glass-card{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));padding:16px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.5)}
+
+/* ---------- Auth / Neon card ---------- */
+.auth-body{height:100vh;display:flex;align-items:center;justify-content:center;padding:40px}
+.auth-card{display:flex;width:900px;border-radius:12px;overflow:hidden;box-shadow:0 8px 60px rgba(107,33,168,0.45);border:2px solid rgba(139,92,246,0.25)}
+.auth-left{width:50%;padding:44px;background:linear-gradient(180deg,rgba(0,0,0,0.45),rgba(0,0,0,0.6))}
+.auth-right{width:50%;background:linear-gradient(135deg,var(--accent-2),#4c1d95);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:40px;color:#fff}
+.login-title{font-size:36px;margin:0 0 20px}
+
+/* form */
+.input-group{margin-bottom:18px}
+.input-group label{display:block;color:var(--muted);margin-bottom:8px}
+.input-group input{width:100%;padding:12px;border-radius:8px;border:none;background:rgba(255,255,255,0.02);color:#fff;outline:none;border-bottom:2px solid rgba(139,92,246,0.12)}
+.btn-primary{width:100%;padding:12px;border-radius:30px;border:none;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;font-weight:700}
+
+/* small helper */
+.muted{color:var(--muted)}
+.switch-auth{margin-top:14px}
+
+/* flash */
+.flash{background:#fff3cd;padding:10px;border-radius:8px;margin-top:8px;color:#5a3c00}
+
+/* ---------- Dashboard pages ---------- */
+.dashboard-body{min-height:100vh;background:radial-gradient(circle at 10% 10%, #15021f 0%, #05020a 60%);padding-bottom:60px}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:18px 48px}
+.container-center{max-width:1100px;margin:30px auto;padding:0 22px}
+
+/* logs table */
+.logs-table{width:100%;border-collapse:collapse;margin-top:16px}
+.logs-table th, .logs-table td{padding:10px;border-bottom:1px solid rgba(255,255,255,0.03);text-align:left}
+.attack-row{background:rgba(255,80,80,0.06)}
+
+/* cards for home (if used) */
+.home-cards{display:flex;gap:24px;justify-content:center;margin-top:40px}
+.card{width:280px;padding:20px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 8px 30px rgba(0,0,0,0.4);text-align:center}
+
+/* responsive */
+@media (max-width:900px){
+  .auth-card{flex-direction:column;width:92%}
+  .auth-left,.auth-right{width:100%}
+  .home-hero{flex-direction:column}
+  .hero-right{width:100%}
+}

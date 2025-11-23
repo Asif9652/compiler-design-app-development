@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Login — Log Classifier</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="auth-body">
+
+  <div class="auth-card animate-pop">
+    <div class="auth-left">
+      <h2 class="login-title">Login</h2>
+
+      <form method="post" action="{{ url_for('login') }}">
+        <div class="input-group">
+          <label>Username</label>
+          <input name="username" type="text" required>
+        </div>
+
+        <div class="input-group">
+          <label>Password</label>
+          <input name="password" type="password" required>
+        </div>
+
+        <button class="btn-primary" type="submit">Login</button>
+
+        <p class="switch-auth muted">Don't have an account? <a href="{{ url_for('register') }}">Sign Up</a></p>
+      </form>
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% for cat, msg in messages %}
+          <div class="flash">{{ msg }}</div>
+        {% endfor %}
+      {% endwith %}
+    </div>
+
+    <div class="auth-right">
+      <h1>WELCOME<br>BACK!</h1>
+      <p class="muted">Securely detect suspicious logins and monitor attacks.</p>
+    </div>
+  </div>
+
+<script src="{{ url_for('static', filename='ui.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>User Page — Log Classifier</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="dashboard-body">
+
+<nav class="nav">
+  <div class="logo">Log Classifier</div>
+  <div>
+    <span class="muted">Signed in as <strong>{{ current_user.username }}</strong></span>
+    <a href="{{ url_for('logout') }}" class="btn small ghost">Logout</a>
+  </div>
+</nav>
+
+<div class="container-center">
+  <h2>Recent login attempts</h2>
+
+  {% if logs %}
+    <table class="logs-table">
+      <thead><tr><th>Time</th><th>Raw</th><th>Type</th><th>Attack?</th></tr></thead>
+      <tbody>
+        {% for l in logs %}
+          <tr class="{{ 'attack-row' if l.is_attack else '' }}">
+            <td>{{ l.timestamp }}</td>
+            <td>{{ l.raw_log }}</td>
+            <td>{{ l.attack_type }}</td>
+            <td>{{ "Yes" if l.is_attack else "No" }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No recent attempts.</p>
+  {% endif %}
+</div>
+
+<script src="{{ url_for('static', filename='ui.js') }}"></script>
+</body>
+</html>

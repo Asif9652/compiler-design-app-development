@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Log Classifier — Home</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="home-body">
+
+  <div class="home-top">
+    <div class="brand">Log <span class="accent">Classifier</span></div>
+    <div class="actions">
+      {% if current_user.is_authenticated %}
+        <span class="who">Hi, {{ current_user.username }}</span>
+        <a class="ghost" href="{{ url_for('logout') }}">Logout</a>
+      {% else %}
+        <a class="btn" href="{{ url_for('login') }}">Login</a>
+        <a class="ghost" href="{{ url_for('register') }}">Register</a>
+      {% endif %}
+    </div>
+  </div>
+
+  <main class="home-hero">
+    <section class="hero-left">
+      <h1>Machine-learning powered<br><span class="accent">Cyberattack Detection</span></h1>
+      <p class="lead">Monitor login attempts, detect suspicious activity with model+rules and view clear logs.</p>
+
+      <div class="cta-row">
+        {% if current_user.is_authenticated %}
+          <a class="primary" href="{{ url_for('admin_dashboard') if current_user.role == 'admin' else url_for('user_page') }}">Open Dashboard</a>
+        {% else %}
+          <a class="primary" href="{{ url_for('register') }}">Get Started</a>
+          <a class="secondary" href="{{ url_for('login') }}">Sign In</a>
+        {% endif %}
+      </div>
+
+      <div class="features">
+        <div class="feature"><div class="f-ico">🛡️</div><div><strong>Real-time detection</strong><div class="muted">Model + signatures</div></div></div>
+        <div class="feature"><div class="f-ico">📊</div><div><strong>Logs & Reports</strong><div class="muted">Exportable</div></div></div>
+        <div class="feature"><div class="f-ico">⚙️</div><div><strong>Easy setup</strong><div class="muted">SQLite + Flask</div></div></div>
+      </div>
+    </section>
+
+    <section class="hero-right">
+      <div class="glass-card">
+        <h3>Quick Demo</h3>
+        <p class="muted">Try the default admin (admin / admin123) or register and run sample attacks like `admin' OR 1=1` to see detection.</p>
+        <div class="mini-stats">
+          <div><strong>Model</strong><div class="muted">Fallback / trained</div></div>
+          <div><strong>DB</strong><div class="muted">SQLite</div></div>
+        </div>
+        <div class="tiny-note">Default admin: <code>admin</code> / <code>admin123</code></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="home-foot">
+    <div>Built with ❤️ — LogClassifier</div>
+    <div class="muted">Demo only — use responsibly</div>
+  </footer>
+
+<script src="{{ url_for('static', filename='ui.js') }}"></script>
+</body>
+</html>

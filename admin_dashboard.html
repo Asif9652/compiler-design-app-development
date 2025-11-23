@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Admin Dashboard — Log Classifier</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="dashboard-body">
+
+<nav class="nav">
+  <div class="logo">Log Classifier (Admin)</div>
+  <div><a href="{{ url_for('logout') }}" class="btn ghost">Logout</a></div>
+</nav>
+
+<div class="container-center">
+  <h2>All Logs</h2>
+  {% if logs %}
+  <table class="logs-table">
+    <thead><tr><th>Time</th><th>Username</th><th>IP</th><th>Raw</th><th>Parsed</th><th>Type</th><th>Attack?</th></tr></thead>
+    <tbody>
+      {% for l in logs %}
+        <tr class="{{ 'attack-row' if l.is_attack else '' }}">
+          <td>{{ l.timestamp }}</td>
+          <td>{{ l.username_attempt }}</td>
+          <td>{{ l.ip_address }}</td>
+          <td>{{ l.raw_log }}</td>
+          <td><pre style="white-space:pre-wrap;">{{ l.parsed_log }}</pre></td>
+          <td>{{ l.attack_type }}</td>
+          <td>{{ "Yes" if l.is_attack else "No" }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+    <p>No logs yet.</p>
+  {% endif %}
+
+  <h3>Detected Attacks</h3>
+  {% if attacks %}
+    <table class="logs-table">
+      <thead><tr><th>Time</th><th>Username</th><th>IP</th><th>Type</th><th>Raw</th></tr></thead>
+      <tbody>
+        {% for a in attacks %}
+          <tr>
+            <td>{{ a.timestamp }}</td>
+            <td>{{ a.username }}</td>
+            <td>{{ a.ip_address }}</td>
+            <td>{{ a.attack_type }}</td>
+            <td>{{ a.raw_log }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No detected attacks yet.</p>
+  {% endif %}
+</div>
+
+<script src="{{ url_for('static', filename='ui.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="home-body">
+
+<nav class="home-nav">
+    <h2 class="logo">Log Classifier</h2>
+    <div class="nav-right">
+        <span class="username">Hi, {{ username }} 👋</span>
+        <a href="/logout" class="logout-btn">Logout</a>
+    </div>
+</nav>
+
+<div class="hero">
+    <h1 class="hero-title">Your Smart Log Analyzer</h1>
+    <p class="hero-sub">Upload logs, detect issues, and monitor trends — all in one dashboard.</p>
+</div>
+
+<div class="home-cards">
+    <div class="card">
+        <h3>📤 Upload Logs</h3>
+        <p>Upload system logs and automatically detect warnings and errors.</p>
+        <a href="/upload" class="btn-primary card-btn">Upload</a>
+    </div>
+
+    <div class="card">
+        <h3>📄 View All Logs</h3>
+        <p>Explore previously uploaded logs with classification results.</p>
+        <a href="/logs" class="btn-primary card-btn">View Logs</a>
+    </div>
+
+    <div class="card">
+        <h3>📊 Analytics</h3>
+        <p>Get insights from log patterns and visualize error types.</p>
+        <a href="/analytics" class="btn-primary card-btn">Open</a>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='ui.js') }}"></script>
+</body>
+</html>

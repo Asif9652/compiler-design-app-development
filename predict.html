@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Predict Log Type</h2>
+
+    <form method="post">
+        <textarea name="log_text" rows="5" cols="50"></textarea><br><br>
+        <button>Predict</button>
+    </form>
+
+    {% if prediction %}
+        <h3>Prediction: {{ prediction }}</h3>
+    {% endif %}
+
+    <a href="/logout">Logout</a>
+</body>
+</html>
